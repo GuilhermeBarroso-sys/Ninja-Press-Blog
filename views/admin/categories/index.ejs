@@ -1,0 +1,55 @@
+<%- include('../../partials/header.ejs') %>
+
+<%- include('../../partials/navbar.ejs') %>
+    <div class="container w-auto">
+        <hr>
+        <h3>Categorias</h3>
+        <a href = "/admin/categories/new" class="btn btn-success">Criar nova categoria</a>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Slug</th>
+                        <th>ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% categories.forEach(category => { %>
+                        <tr>
+                            <td><%= category.id %></td>
+                            <td><%= category.title %></td>
+                            <td><%= category.slug %></td>
+                            <td>
+                                <a href= "/admin/categories/edit/<%= category.id %>" class="btn btn-info">Editar  </a>
+                                <form method = "POST" action="/categories/delete"  onsubmit="confirmDel(event,this)" style = "display: inline;">
+                                    <input type = "hidden" name = "id" value = "<%= category.id %>"  />  <!-- pegar o id da pa categoria-->
+                                    <!--category.id pois no forEach você definiu esse nome-->
+                                    <button class="btn btn-danger">Deletar</button>
+                                </form>
+                            
+                            </td>
+                        </tr>
+                    <% }) %>
+                    
+                </tbody>
+            </table>
+        </div> <!--table-responsive-->
+    </div>
+
+
+<%- include('../../partials/footer.ejs') %>
+
+<script>
+    function confirmDel(event, form) {
+        event.preventDefault();
+       
+        var decision = confirm("A categoria será deletada, quer continuar?");
+        if(decision) {
+            form.submit();
+        }
+        
+    }
+</script>

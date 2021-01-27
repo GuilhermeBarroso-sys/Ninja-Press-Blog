@@ -1,0 +1,27 @@
+<%- include('../../partials/header.ejs') %>
+
+    <div class="container w-50">
+      
+        <div class="card mt-4">
+            <div class="card-header">
+                Entrar
+            </div> <!--card-header-->
+
+            <div class="card-body">
+                <form action = "/authenticate" method = "POST">
+                    
+                    <label>Usuário</label>
+                    <input class = "form-control" type="text" name="username" placeholder = "Digite o seu usuario para entrar no site" />
+                    <br>
+                    <label>Senha</label>
+                    <input class = "form-control" type="password" name="password" placeholder = "Digite sua senha" />
+                    <br>
+                    <button type = "submit" class = "btn btn-success">Criar</button>
+                </form>
+            </div> <!--card-body-->
+        </div> <!--card-->
+    </div>
+
+
+
+<%- include('../../partials/footer.ejs') %>

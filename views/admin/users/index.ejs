@@ -1,0 +1,58 @@
+<%- include('../../partials/header.ejs') %>
+
+
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container  w-auto">
+        <hr>
+        <h3>Usuários</h3>
+        <a href = "/admin/users/create" class = "btn btn-info">Criar novo usuário</a>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Id do usuário</th>
+                        <th>Nome</th>
+                        <th>Usuário</th>
+                        <th>Email</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.username %></td>
+                        <td><%= user.email %></td>
+                        
+                        <td>
+                            
+                            <a href= "/admin/users/edit/<%= user.id %>" class="btn btn-info">Editar  </a>
+                            
+                            <form method = "POST" action="/users/delete"  onsubmit="confirmDel(event,this)" style = "display: inline;">
+                                <input type = "hidden" name = "id" value = "<%= user.id %>"  />  <!-- pegar o id da pa categoria-->
+                                <!--category.id pois no forEach você definiu esse nome-->
+                                <button class="btn btn-danger">Deletar</button>
+                            </form>
+                        
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+            </table>
+        </div>
+    </div> <!--container-->
+    <script>
+        function confirmDel(event, form) {
+            event.preventDefault();
+            
+            var decision = confirm("O usuário será deletado, quer continuar?");
+            if(decision) {
+                form.submit();
+            }
+            
+        }
+    </script>
+
+<%- include('../../partials/footer.ejs') %>

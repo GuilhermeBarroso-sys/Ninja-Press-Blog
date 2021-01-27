@@ -1,0 +1,60 @@
+<%- include('../../partials/header.ejs') %>
+
+<%- include('../../partials/navbar.ejs') %>
+    <div class="container-fluid">
+        <hr>
+        <h3>Artigos</h3>
+        <a href = "/admin/articles/new" class="btn btn-success">Criar novo artigo</a>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Slug</th>
+                        <th>Categoria</th>
+                        <th>ações</th style = "width:40%;">  
+                    </tr>
+                </thead>
+                <tbody>
+                <% articles.forEach(article => { %>
+                    <tr>
+                        <td> <%= article.id %> </td>
+                        <td> <%= article.title %></td>
+                        <td> <%= article.slug %> </td>
+                        <td> <%= article.category.title %></td>
+                        
+                        <td>
+                            <a href = "/admin/articles/edit/<%= article.id %>" class = "btn btn-info">Editar</a>
+                            <form method = "POST" action="/articles/delete"  onsubmit="confirmDel(event,this)" style = "display: inline;">
+                                <input type = "hidden" name = "id" value = "<%= article .id %>"  />  <!-- pegar o id da pa categoria-->
+                                <!--category.id pois no forEach você definiu esse nome-->
+                                <button class="btn btn-danger">Deletar</button> 
+                            </form>
+                        </td>
+                    </tr>
+                        
+                    <% }) %>
+                    
+                </tbody>
+            </table>
+        </div>
+    
+        
+    </div>
+
+
+<%- include('../../partials/footer.ejs') %>
+
+<script>
+    function confirmDel(event, form) {
+        event.preventDefault();
+       
+        var decision = confirm("O artigo será deletado, quer continuar?");
+        if(decision) {
+            form.submit();
+        }
+        
+    }
+</script>

@@ -1,0 +1,25 @@
+div.bg-white03 {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.float-right {
+    float:right;
+}
+.float-left {
+    float: left;
+}
+.clear {
+    clear: both;
+}
+
+.svg-big {
+    max-width:300px;
+    max-height:300px;
+    min-height:45px;
+    min-width:45px;
+    width:30%;
+    height:30%;
+}
+.mvh{
+    margin:0 0.5vh;
+}

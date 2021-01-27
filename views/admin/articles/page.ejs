@@ -1,0 +1,57 @@
+<%- include('../../partials/header.ejs') %>
+
+    <%- include('../../partials/homenavbar.ejs') %>
+    <div class="container">
+        
+        <br>
+        <h2 class="display-5 text-center" >Artigos</h2>
+        <hr class = "my-4" style = "width:100%;">
+        <% result.articles.rows.forEach(article => { %>
+            <div class="card">
+                <div class="card-header">
+                     <h2><%= article.title %></h2>
+                </div> <!--card-header-->
+                <div class="card-body">
+                        <a class = "btn btn-info text-light" href = "/<%= article.slug %>">Ler artigo</a>
+                        <input type="hidden" name="slug" value = "<%= article.slug %>">
+                    </form>
+                    
+                </div> <!--card-body-->
+                
+            </div> <!--card-->
+             <br>    
+             
+         <% }) %>
+         
+            <div class="row">
+                <div class="col col-12">
+                    <% if( result.page == 1 ) { %>
+                        <a class="page-link" href = "/" style = "float:left">
+                            <h6>Anterior</h6>
+                        </a> 
+                    <% } else if(result.page > 1) { %>
+                        <a class="page-link" href = "/articles/page/<%= result.page - 1 %>" style = "float:left">
+                            <h6>Anterior </h6>
+                        </a> 
+                    <% }  %>
+                    
+                   
+                  
+                    
+                    <% if(result.next == true) { %>
+                    <a class="page-link" href = "/articles/page/<%= result.page + 1 %>" style = "float:right">
+                   
+                        <h6>Proxima</h6>
+                    </a>
+                    <% } %>
+                    
+                </div> 
+            </div>
+           
+         
+    
+    
+        
+
+
+<%- include('../../partials/footer.ejs') %>

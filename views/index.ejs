@@ -1,0 +1,55 @@
+<%- include('./partials/header.ejs') %>
+
+    <%- include('./partials/homenavbar.ejs') %>
+    <div class="container">
+        
+        <div class="bg-white03 " style = "border-radius:15px;padding:0 2rem;" >
+            <br class = "my-2">
+            <h1 class = "display-4">Bem-vindo</h1>
+            <p class = "lead">Simples home page de um blog</p>
+            <hr class = "my-4" style = "width:100%;">
+            <h5 class = "display-6 my-3"> Descrição detalhada aqui!</h6>
+            
+            <a href = "/" class = "btn btn-primary" style = "margin-bottom:1rem;"> Leia mais</a>
+            
+            
+        </div>
+        <br>
+        <h2 class="display-5 text-center" >Artigos</h2>
+        <hr class = "my-4" style = "width:100%;">
+        <% articles.forEach(article => { %>
+            <div class="card">
+                <div class="card-header">
+                     <h2><%= article.title %></h2>
+                </div> <!--card-header-->
+                <div class="card-body">
+                        
+                        <a class = "btn btn-info text-light" href = "/<%= article.slug %>">Ler artigo</a>
+                        <input type="hidden" name="slug" value = "<%= article.slug %>">
+                    </form>
+                    
+                </div> <!--card-body-->
+                
+            </div> <!--card-->
+             <br>    
+         <% }) %>
+         
+            <div class="row">
+                <div class="col col-12">
+                    <a class="page-link" href = "/articles/page/1" style = "float:right">
+                        <h6>Proxima </h6>
+                    </a>
+                    
+                </div>
+                
+            </div> <!--row-->
+       
+            
+            <br>
+            <div class="clear"></div>
+    </div>
+    
+        
+
+
+<%- include('./partials/footer.ejs') %>
