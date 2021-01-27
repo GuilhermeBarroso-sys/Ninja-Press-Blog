@@ -1,5 +1,5 @@
 # Ninjapress
-[![NPM](https://github.com/GuilhermeBarroso-sys/Ninja-Press-Blog/blob/main/LICENSE) 
+[![NPM](https://github.com/GuilhermeBarroso-sys/Ninja-Press-Blog/blob/main/LICENSE)
 
 # Sobre o projeto
 
