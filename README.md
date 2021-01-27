@@ -39,7 +39,7 @@ A aplicação consiste em um Blog com artigos, categorias e painel administrativ
 
 ```bash
 # clonar repositório
-git clone https://github.com/GuilhermeBarroso-sys/Projeto-Blog.git
+git clone https://github.com/GuilhermeBarroso-sys/Ninja-Press-Blog.git
 
 # entrar na pasta do projeto
 cd projeto
